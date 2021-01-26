@@ -46,8 +46,5 @@ export class CrudComponent implements OnInit {
 
 }
 
-refresh(){
-  location.reload();
-}
 
 }

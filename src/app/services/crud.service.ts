@@ -27,7 +27,9 @@ export class CrudService {
       if ( !localStorage.getItem('list') ){
         this.getAll().subscribe(items => {
           localStorage.setItem('list', JSON.stringify([items]));
+          location.reload();
         });
+       
       }
   }
 
