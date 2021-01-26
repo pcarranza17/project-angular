@@ -26,7 +26,7 @@ export class CrudService {
   initList(){
       if ( !localStorage.getItem('list') ){
         this.getAll().subscribe(items => {
-          localStorage.setItem('list', JSON.stringify([items]));
+          localStorage.setItem('list', JSON.stringify(items));
           location.reload();
         });
        
@@ -35,25 +35,25 @@ export class CrudService {
 
 
   getList(){
-    return JSON.parse(localStorage.getItem('list'))[0];
+    return JSON.parse(localStorage.getItem('list'));
   }
 
   add(newEntity: Entity){
     let list = this.getList();
     list.push(newEntity);
-    localStorage.setItem('list', JSON.stringify([list]));
+    localStorage.setItem('list', JSON.stringify(list));
   }
 
   delete(index: number){
     let list = this.getList();
     list.splice(index, 1);
-    localStorage.setItem('list', JSON.stringify([list]));
+    localStorage.setItem('list', JSON.stringify(list));
   }
 
   update(updateEntity: Entity, index: number){
     let list = this.getList();
     list[index] = updateEntity;
-    localStorage.setItem('list', JSON.stringify([list]));
+    localStorage.setItem('list', JSON.stringify(list));
   }
 
   getByIndex(index: number){
