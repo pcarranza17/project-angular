@@ -1,0 +1,44 @@
+<p-toolbar>
+    <div class="p-toolbar-group-left">
+        <p-button label="New" [routerLink]="['/crud/create']" icon="pi pi-plus"></p-button>
+        <p-button label="Refresh" (click)="refresh()" icon="pi pi-plus"></p-button>
+    </div>
+    
+</p-toolbar>
+<p-table [columns]="cols" [value]="entities" selectionMode="single" [(selection)]="selectedEntity" [paginator]="true" rows="5" >
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns" let-i="rowIndex">
+        <tr>
+            <td *ngFor="let col of columns">
+                <span *ngIf="col.field==='title'" class="animate-if">{{rowData[col.field][0]._value}}</span>
+                <span *ngIf="col.field!='title'" class="animate-if">{{rowData[col.field]}}</span>
+            </td>
+            <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" [routerLink]="['/crud', i]"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="delete(i)"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="footer" let-columns>
+        <tr>
+            <td *ngFor="let col of columns">
+            {{col.header}}
+            </td>
+            <td>Actions</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        There are {{entities?.length}} entities
+    </ng-template>
+</p-table>
+
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+

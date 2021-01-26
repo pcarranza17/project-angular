@@ -1,0 +1,28 @@
+<p-toast></p-toast>
+<p-toolbar>
+    <div class="p-toolbar-group-left">
+        <p-button label="Update" icon="pi pi-plus" (click) = "update()"></p-button>
+        <button pButton pRipple label="Go to List" [routerLink]="['/home']" class="p-button-warning"></button>
+    </div>
+    
+</p-toolbar>
+<div class="p-fluid">
+    <div class="p-field p-grid">
+        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Title</label>
+        <div class="p-col-12 p-md-10">
+            <input id="title" type="text" pInputText [(ngModel)]="title" > 
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="about" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">About</label>
+        <div class="p-col-12 p-md-10">
+            <input id="about" type="text" pInputText [(ngModel)]="about"> 
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="accesurl" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Access URL</label>
+        <div class="p-col-12 p-md-10">
+            <input id="accesurl" type="text" pInputText [(ngModel)]="accessUrl"> 
+        </div>
+    </div>
+</div>
